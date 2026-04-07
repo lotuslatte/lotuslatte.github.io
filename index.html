@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light" data-lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Favio Samillan Flores — Economist, researcher, and poet exploring migration, climate change, and development economics across Latin America and Sub-Saharan Africa.">
+<meta property="og:title" content="Favio Samillan Flores — Economist, Researcher, Poet">
+<meta property="og:description" content="Research assistant exploring migration, climate change, and development economics across Latin America and Sub-Saharan Africa.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="">
+<meta property="og:image" content="">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Favio Samillan Flores">
+<meta name="twitter:description" content="Economist, researcher, and poet exploring migration, climate change, and development economics.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.88em' font-size='80' font-family='serif'>F</text></svg>">
+<title>Favio Samillan Flores</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+
+:root{
+  --bg:#fefcf9;
+  --bg-alt:#faf6f0;
+  --fg:#2a1810;
+  --fg-muted:#7a6050;
+  --fg-light:#b8a898;
+  --accent:#8c3a1e;
+  --accent-hover:#a64424;
+  --accent-light:rgba(140,58,30,.03);
+  --border:#e8ddd0;
+  --border-light:#f0e8dc;
+  --rule:rgba(140,58,30,.14);
+  --grain:.015;
+}
+
+[data-theme="dark"]{
+  --bg:#0e0d0b;--bg-alt:#161412;--fg:#e2ded6;--fg-muted:#8a8279;--fg-light:#5e5950;
+  --accent:#c9a84c;--accent-hover:#ddbf60;--accent-light:rgba(201,168,76,.06);
+  --border:#2a2720;--border-light:#1e1c18;--rule:rgba(201,168,76,.15);--grain:.04;
+}
+
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;transition:background .4s,color .4s}
+
+body{
+  font-family:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  background:var(--bg);color:var(--fg);line-height:1.7;overflow-x:hidden;
+}
+
+/* paper grain */
+body::after{
+  content:'';position:fixed;inset:0;z-index:9999;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:var(--grain);
+}
+
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.sans{font-family:'Jost',sans-serif}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem clamp(1.5rem,4vw,3rem);
+  background:transparent;
+  border-bottom:1px solid transparent;
+  transition:all .5s ease;
+}
+nav.scrolled{
+  background:rgba(254,252,249,.92);
+  backdrop-filter:blur(12px);
+  border-color:var(--border-light);
+}
+[data-theme="dark"] nav.scrolled{background:rgba(14,13,11,.92)}
+.logo{
+  font-size:1.15rem;font-weight:600;letter-spacing:.15em;text-decoration:none;
+  font-family:'Jost',sans-serif;text-transform:uppercase;
+}
+.logo span{color:var(--accent)}
+nav ul{list-style:none;display:flex;align-items:center;gap:clamp(1rem,2.5vw,2rem)}
+nav li a{
+  text-decoration:none;font-family:'Jost',sans-serif;
+  font-size:.7rem;font-weight:400;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--fg-muted);transition:color .3s;
+}
+nav li a:hover{color:var(--accent)}
+nav li a.nav-cv{
+  padding:.4rem 1rem;border:1px solid var(--accent);color:var(--accent);
+  transition:all .3s;
+}
+nav li a.nav-cv:hover{background:var(--accent);color:var(--bg)}
+.nav-controls{display:flex;align-items:center;gap:.5rem}
+.theme-toggle,.lang-toggle{
+  width:32px;height:32px;border:1px solid var(--border);background:transparent;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  color:var(--fg-muted);transition:all .3s;border-radius:0;
+  font-family:'Jost',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.05em;
+}
+.theme-toggle:hover,.lang-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.theme-toggle svg{width:16px;height:16px}
+.theme-toggle .icon-moon{display:block}
+.theme-toggle .icon-sun{display:none}
+[data-theme="dark"] .theme-toggle .icon-moon{display:none}
+[data-theme="dark"] .theme-toggle .icon-sun{display:block}
+.lang-toggle{width:auto;padding:0 .6rem}
+.menu-btn{display:none;cursor:pointer;padding:6px}
+.menu-btn span{display:block;width:20px;height:1px;background:var(--fg);margin:5px 0;transition:.3s}
+
+/* ─── WRAP ─── */
+.wrap{max-width:960px;margin:0 auto;padding:0 clamp(1.5rem,4vw,3rem)}
+.wrap-wide{max-width:1100px;margin:0 auto;padding:0 clamp(1.5rem,4vw,3rem)}
+
+/* ─── SECTION COMMON ─── */
+section{padding:clamp(4rem,8vw,7rem) 0}
+.eyebrow{
+  font-family:'Jost',sans-serif;font-size:.65rem;font-weight:500;
+  letter-spacing:.25em;text-transform:uppercase;color:var(--accent);
+  margin-bottom:.4rem;
+}
+.section-rule{width:40px;height:1px;background:var(--rule);margin-bottom:1.5rem}
+.stitle{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:400;line-height:1.2;margin-bottom:2.5rem;letter-spacing:.01em}
+hr.divider{border:none;height:1px;background:var(--border);margin:0}
+
+/* ─── HERO ─── */
+.hero{
+  min-height:100vh;display:flex;align-items:center;
+  padding-top:5rem;padding-bottom:3rem;
+}
+.hero-grid{
+  display:grid;grid-template-columns:1fr 300px;gap:clamp(2rem,5vw,5rem);align-items:center;
+}
+.hero-text{position:relative;z-index:1}
+.hero h1{
+  font-size:clamp(3rem,6.5vw,5.2rem);font-weight:300;line-height:1.05;
+  letter-spacing:-.01em;margin-bottom:1.5rem;
+}
+.hero-bio{
+  font-size:1.1rem;font-weight:300;color:var(--fg-muted);
+  max-width:480px;line-height:1.8;margin-bottom:2.2rem;
+}
+.hero-ctas{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:'Jost',sans-serif;font-size:.7rem;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  padding:.75rem 2rem;border:1px solid var(--fg);
+  position:relative;overflow:hidden;transition:all .4s ease;
+}
+.btn::before{
+  content:'';position:absolute;inset:0;background:var(--fg);
+  transform:scaleX(0);transform-origin:left;transition:transform .4s ease;z-index:0;
+}
+.btn span{position:relative;z-index:1}
+.btn:hover::before{transform:scaleX(1)}
+.btn:hover{color:var(--bg)}
+.btn-fill{background:var(--fg);color:var(--bg)}
+.btn-fill::before{background:var(--accent)}
+.btn-fill:hover{border-color:var(--accent);color:#fff}
+.btn svg{width:14px;height:14px;position:relative;z-index:1}
+
+/* portrait placeholder */
+.hero-portrait{
+  width:100%;aspect-ratio:3/4;
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+  background:var(--bg-alt);
+}
+.hero-portrait::before{
+  content:'';position:absolute;inset:6px;border:1px solid var(--border-light);
+}
+.portrait-initials{
+  font-size:3.2rem;font-weight:300;letter-spacing:.2em;color:var(--fg-light);
+  font-style:italic;
+}
+
+/* ─── ABOUT ─── */
+.about-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,5rem);
+}
+.about-text{font-size:1rem;color:var(--fg-muted);font-weight:300;line-height:1.85}
+.about-text p+p{margin-top:1rem}
+.counters{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:2.5rem;border:1px solid var(--border)}
+.counter{padding:1.2rem;background:var(--bg);text-align:center}
+.counter-num{font-size:2rem;font-weight:600;color:var(--accent);line-height:1}
+.counter-label{
+  font-family:'Jost',sans-serif;font-size:.6rem;font-weight:400;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--fg-muted);margin-top:.3rem;
+}
+
+/* ─── EXPERIENCE ─── */
+.xp-section{background:var(--bg-alt)}
+.xp-item{
+  padding:1.5rem 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:160px 1fr;gap:2rem;
+  cursor:pointer;transition:background .3s;
+}
+.xp-item:first-child{border-top:1px solid var(--border)}
+.xp-item:hover{background:var(--accent-light)}
+.xp-when{
+  font-family:'Jost',sans-serif;font-size:.68rem;font-weight:400;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--fg-muted);padding-top:.15rem;
+}
+.xp-role{font-weight:500;font-size:1.05rem}
+.xp-org{font-size:.9rem;color:var(--accent);font-weight:400;font-style:italic;margin-top:.1rem}
+.xp-desc{
+  font-size:.9rem;color:var(--fg-muted);font-weight:300;line-height:1.7;
+  max-height:0;overflow:hidden;opacity:0;
+  transition:max-height .5s ease,opacity .4s,margin .4s;margin-top:0;
+}
+.xp-item.open .xp-desc{max-height:200px;opacity:1;margin-top:.6rem}
+
+/* ─── WRITING ─── */
+.writing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;border:1px solid var(--border)}
+.writing-card{
+  padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg);
+  display:flex;flex-direction:column;text-decoration:none;
+  transition:background .4s;
+}
+.writing-card:hover{background:var(--accent-light)}
+.writing-num{
+  font-family:'Jost',sans-serif;font-size:.58rem;font-weight:500;
+  letter-spacing:.15em;color:var(--fg-light);margin-bottom:1rem;
+}
+.writing-title{font-size:1.2rem;font-weight:500;margin-bottom:.6rem;line-height:1.3}
+.writing-desc{font-size:.88rem;color:var(--fg-muted);font-weight:300;line-height:1.7;flex:1}
+.writing-status{
+  margin-top:1.2rem;font-family:'Jost',sans-serif;font-size:.6rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--accent);
+}
+
+/* ─── PUBLICATIONS ─── */
+.pub-item{padding:1.5rem 0;border-bottom:1px solid var(--border)}
+.pub-item:first-child{border-top:1px solid var(--border)}
+.pub-type{
+  display:inline-block;font-family:'Jost',sans-serif;
+  font-size:.55rem;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);border:1px solid var(--border);padding:.15rem .7rem;margin-bottom:.5rem;
+}
+.pub-title{font-size:1.1rem;font-weight:400;line-height:1.4}
+.pub-title a{text-decoration:none;transition:color .3s}
+.pub-title a:hover{color:var(--accent)}
+.pub-meta{font-size:.82rem;color:var(--fg-muted);font-weight:300;margin-top:.2rem;font-style:italic}
+
+/* ─── CONFERENCES ─── */
+.conf-section{background:var(--bg-alt)}
+.conf-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;border:1px solid var(--border)}
+.conf-card{padding:clamp(1.2rem,2.5vw,2rem);background:var(--bg-alt)}
+.conf-year{font-size:1.6rem;font-weight:300;color:var(--accent);margin-bottom:.4rem}
+.conf-name{font-weight:500;font-size:.95rem;line-height:1.3;margin-bottom:.3rem}
+.conf-detail{font-size:.85rem;color:var(--fg-muted);font-weight:300;line-height:1.6}
+.conf-loc{
+  font-family:'Jost',sans-serif;font-size:.62rem;letter-spacing:.08em;
+  color:var(--fg-light);margin-top:.6rem;text-transform:uppercase;
+}
+
+/* ─── SKILLS ─── */
+.skills-grid{display:grid;grid-template-columns:2fr 1fr;gap:clamp(2rem,4vw,4rem)}
+.skill-group+.skill-group{margin-top:1.8rem}
+.skill-group-title{
+  font-family:'Jost',sans-serif;font-size:.6rem;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--fg-muted);margin-bottom:.7rem;
+}
+.skill-tags{display:flex;flex-wrap:wrap;gap:.35rem}
+.skill-tag{
+  font-family:'Jost',sans-serif;font-size:.7rem;font-weight:400;
+  padding:.35rem .9rem;border:1px solid var(--border);
+  transition:all .3s;cursor:default;
+}
+.skill-tag:hover{border-color:var(--accent);color:var(--accent)}
+.lang-block+.lang-block{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--border)}
+.lang-name{font-size:1.1rem;font-weight:500}
+.lang-level{font-size:.82rem;color:var(--fg-muted);font-weight:300;font-style:italic}
+
+/* ─── CONTACT ─── */
+.contact{background:var(--fg);color:var(--bg);text-align:center;padding:clamp(4rem,8vw,7rem) 2rem;position:relative;overflow:hidden}
+.contact::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--accent),transparent);
+}
+.contact .eyebrow{color:var(--accent)}
+.contact .stitle{color:var(--bg);margin-bottom:.6rem}
+.contact-sub{color:var(--fg-muted);font-size:1rem;margin-bottom:2.5rem;font-weight:300}
+.contact-links{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+.contact-link{
+  font-family:'Jost',sans-serif;font-size:.68rem;font-weight:400;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none;
+  padding:.65rem 1.6rem;border:1px solid rgba(250,247,240,.15);
+  color:var(--bg);transition:all .4s;display:inline-flex;align-items:center;gap:.5rem;
+}
+.contact-link:hover{background:var(--bg);color:var(--fg);border-color:var(--bg)}
+.contact-link svg{width:14px;height:14px}
+.contact-link-cv{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.contact-link-cv:hover{background:var(--bg);color:var(--fg);border-color:var(--bg)}
+
+/* ─── FOOTER ─── */
+footer{
+  background:var(--fg);border-top:1px solid var(--border);
+  padding:1.5rem 2rem;text-align:center;
+  font-family:'Jost',sans-serif;font-size:.65rem;color:var(--fg-muted);
+  letter-spacing:.08em;
+}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  nav ul{
+    display:none;position:fixed;top:0;left:0;right:0;bottom:0;
+    background:rgba(254,252,249,.98);backdrop-filter:blur(20px);
+    flex-direction:column;align-items:center;justify-content:center;gap:1.8rem;
+  }
+  [data-theme="dark"] nav ul{background:rgba(14,13,11,.98)}
+  nav ul.open{display:flex}
+  .menu-btn{display:block}
+  .hero-grid{grid-template-columns:1fr;text-align:center}
+  .hero-portrait{max-width:240px;margin:0 auto 2rem;aspect-ratio:1;border-radius:50%}
+  .hero-portrait::before{border-radius:50%}
+  .hero-bio{margin-left:auto;margin-right:auto}
+  .hero-ctas{justify-content:center}
+  .about-grid{grid-template-columns:1fr}
+  .xp-item{grid-template-columns:1fr;gap:.2rem}
+  .writing-grid{grid-template-columns:1fr}
+  .writing-grid>a[style]{display:block!important}
+  .writing-grid>a>div{display:block!important}
+  .conf-grid{grid-template-columns:1fr}
+  .skills-grid{grid-template-columns:1fr}
+  .counters{grid-template-columns:1fr 1fr}
+}
+
+/* ─── SCROLL SPY ─── */
+nav li a.active{color:var(--accent)}
+
+/* ─── BACK TO TOP ─── */
+.btt{
+  position:fixed;bottom:2rem;right:2rem;z-index:10000;
+  width:40px;height:40px;border:1px solid var(--border);background:var(--bg);
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  opacity:0;transform:translateY(10px);pointer-events:none;
+  transition:all .4s ease;color:var(--fg-muted);
+}
+.btt.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.btt:hover{border-color:var(--accent);color:var(--accent)}
+.btt svg{width:16px;height:16px}
+
+/* ─── STAGGER CHILDREN ─── */
+.stagger>*{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+.stagger.visible>*{opacity:1;transform:translateY(0)}
+.stagger.visible>*:nth-child(1){transition-delay:.05s}
+.stagger.visible>*:nth-child(2){transition-delay:.12s}
+.stagger.visible>*:nth-child(3){transition-delay:.19s}
+.stagger.visible>*:nth-child(4){transition-delay:.26s}
+.stagger.visible>*:nth-child(5){transition-delay:.33s}
+.stagger.visible>*:nth-child(6){transition-delay:.40s}
+.stagger.visible>*:nth-child(7){transition-delay:.47s}
+
+/* ─── XP ITEM HOVER LINE ─── */
+.xp-item::after{
+  content:'';position:absolute;left:0;bottom:0;width:0;height:1px;
+  background:var(--accent);transition:width .5s ease;
+}
+.xp-item{position:relative}
+.xp-item:hover::after{width:100%}
+
+/* ─── PRINT ─── */
+@media print{
+  nav,body::after,.hero-ctas,.contact,.btt{display:none}
+  body{font-size:11pt}section{padding:1.5rem 0}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo sans" onclick="event.preventDefault();window.scrollTo({top:0,behavior:'smooth'})">Favio<span>.</span></a>
+  <ul id="navMenu">
+    <li><a href="#about" data-es="Sobre m&#237;">About</a></li>
+    <li><a href="#xp" data-es="Experiencia">Experience</a></li>
+    <li><a href="#writing" data-es="Escritura">Writing</a></li>
+    <li><a href="#pub" data-es="Publicaciones">Publications</a></li>
+    <li><a href="#sk" data-es="Habilidades">Skills</a></li>
+    <li><a href="#ct" data-es="Contacto">Contact</a></li>
+    <li><a href="https://drive.google.com/file/d/1JuktXXNhl-qD7OIGgun0cJ4wCWhrcEQl/view?usp=drive_link" target="_blank" class="nav-cv">CV</a></li>
+  </ul>
+  <div class="nav-controls">
+    <button class="lang-toggle sans" id="langToggle" aria-label="Switch language">ES</button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+  </div>
+  <div class="menu-btn" onclick="document.getElementById('navMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap-wide">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <div class="eyebrow sans" data-es="Economista &middot; Investigador &middot; Poeta">Economist &middot; Researcher &middot; Poet</div>
+        <div class="section-rule"></div>
+        <h1>Favio<br>Samillan Flores</h1>
+        <p class="hero-bio" data-es="Asistente de investigaci&#243;n explorando migraci&#243;n, cambio clim&#225;tico y econom&#237;a del desarrollo en Am&#233;rica Latina y &#193;frica Subsahariana.">Research assistant exploring migration, climate change, and development economics across Latin America and Sub-Saharan Africa.</p>
+        <div class="hero-ctas">
+          <a href="#ct" class="btn btn-fill"><span data-es="Cont&#225;ctame">Get in touch</span></a>
+          <a href="#pub" class="btn"><span data-es="Lee mi trabajo">Read my work</span></a>
+          <a href="https://drive.google.com/file/d/1JuktXXNhl-qD7OIGgun0cJ4wCWhrcEQl/view?usp=drive_link" target="_blank" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            <span data-es="Descargar CV">Download CV</span>
+          </a>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <span class="portrait-initials">F.S.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about" class="reveal">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <div class="eyebrow sans" data-es="Sobre m&#237;">About</div>
+        <div class="section-rule"></div>
+        <h2 class="stitle" data-es="En la encrucijada de la migraci&#243;n, el clima y la evidencia.">At the crossroads of migration, climate &amp; evidence.</h2>
+      </div>
+      <div>
+        <div class="about-text">
+          <p data-es="Soy economista de la Pontificia Universidad Cat&#243;lica del Per&#250;, actualmente Asistente de Investigaci&#243;n en el CIUP y colaborando con Lancet Countdown Latin America, FLACSO e IPA.">I'm an economist from the Pontifical Catholic University of Peru, currently a Research Assistant at CIUP and collaborating with the Lancet Countdown Latin America, FLACSO, and IPA.</p>
+          <p data-es="Mi trabajo abarca la inmovilidad en contextos fr&#225;giles, la econom&#237;a de salud y clima, la innovaci&#243;n agr&#237;cola y las estrategias de redes de microempresas &#8212; usando An&#225;lisis de Clases Latentes, PLN y m&#233;todos geoespaciales.">My work spans immobility in fragile contexts, climate-health economics, agricultural innovation, and the network strategies of microenterprises &mdash; using Latent Class Analysis, NLP, and geospatial methods.</p>
+          <p data-es="M&#225;s all&#225; de la investigaci&#243;n, soy poeta publicado, ciclista y cin&#233;filo que cree que la evidencia rigurosa siempre debe contar una historia humana.">Beyond research I'm a published poet, a cyclist, and a cinephile who believes rigorous evidence should always tell a human story.</p>
+        </div>
+        <div class="counters stagger">
+          <div class="counter"><div class="counter-num">6+</div><div class="counter-label sans" data-es="Proyectos de Investigaci&#243;n">Research Projects</div></div>
+          <div class="counter"><div class="counter-num">5</div><div class="counter-label sans" data-es="Publicaciones">Publications</div></div>
+          <div class="counter"><div class="counter-num">5+</div><div class="counter-label sans" data-es="Pa&#237;ses Estudiados">Countries Studied</div></div>
+          <div class="counter"><div class="counter-num">3</div><div class="counter-label sans" data-es="Instituciones">Institutions</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- RESEARCH EXPERIENCE -->
+<section id="xp" class="xp-section reveal">
+  <div class="wrap">
+    <div class="eyebrow sans" data-es="Experiencia en Investigaci&#243;n">Research Experience</div>
+    <div class="section-rule"></div>
+    <h2 class="stitle" data-es="D&#243;nde he trabajado">Where I've worked</h2>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">Apr 2024 &ndash; Present</div>
+      <div><div class="xp-role" data-es="Asistente de Investigaci&#243;n">Research Assistant</div><div class="xp-org">CIUP &mdash; Universidad del Pac&iacute;fico</div><div class="xp-desc" data-es="Estudio multinacional de inmovilidad con Ayuda en Acci&#243;n. Sistemas de datos con IPA y Banco Central de Nigeria. ACL sobre redes de microempresas peruanas. Resumen de pol&#237;ticas FLACSO sobre migraci&#243;n y clima.">Multi-country immobility study with Ayuda en Acci&oacute;n. Data systems with IPA &amp; Central Bank of Nigeria. LCA on Peruvian microenterprise networks. FLACSO policy brief on migration &amp; climate.</div></div>
+    </div>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">Jan 2026 &ndash; Present</div>
+      <div><div class="xp-role" data-es="Investigador de Campo">Fieldwork Researcher</div><div class="xp-org">PUCP &mdash; CGIAR Agricultural Innovations</div><div class="xp-desc" data-es="Validaci&#243;n de innovaciones agr&#237;colas en los Andes peruanos. Liderando trabajo de campo, anal&#237;tica de redes sociales y coautor&#237;a de art&#237;culos para conferencias IASC y SEPIA.">Validating agricultural innovations in the Peruvian Andes. Leading fieldwork, social media analytics, and co-authoring papers for IASC and SEPIA conferences.</div></div>
+    </div>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">Feb 2026 &ndash; Present</div>
+      <div><div class="xp-role" data-es="Pasante">Intern</div><div class="xp-org">Lancet Countdown Latin America</div><div class="xp-desc" data-es="Revisi&#243;n regional de alcance sobre econom&#237;a de salud y clima. Construcci&#243;n de una base de datos consolidada de salud para LAC a partir de datos de mortalidad y morbilidad por pa&#237;s usando R, Python y Rayyan.">Regional scoping review on health-climate economics. Built a consolidated LAC health database from country-level mortality and morbidity data using R, Python, and Rayyan.</div></div>
+    </div>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">Sep &ndash; Nov 2025</div>
+      <div><div class="xp-role" data-es="Investigador de Campo">Fieldwork Researcher</div><div class="xp-org">PUCP &mdash; Cordillera Azul Study</div><div class="xp-desc" data-es="Evaluaci&#243;n de intervenciones de CIMA a trav&#233;s de entrevistas semiestructuradas en Aguayt&#237;a, Tocache, Tarapoto y Contamana.">Evaluated CIMA interventions through semi-structured interviews across Aguayt&iacute;a, Tocache, Tarapoto, and Contamana.</div></div>
+    </div>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">Apr &ndash; May 2025</div>
+      <div><div class="xp-role" data-es="Asistente de Investigaci&#243;n">Research Assistant</div><div class="xp-org">PUCP &mdash; Resilient Rules (ERC)</div><div class="xp-desc" data-es="Desarrollo de protocolos de trabajo de campo y herramientas de consentimiento &#233;tico para San Ignacio de Kiu&#241;alla. Preparaci&#243;n de datos para env&#237;o a la Universidad de Zaragoza.">Developed fieldwork protocols and ethical consent tools for San Ignacio de Kiu&ntilde;alla. Prepared data for submission to the University of Zaragoza.</div></div>
+    </div>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">Jun &ndash; Aug 2024</div>
+      <div><div class="xp-role" data-es="Asistente de Investigaci&#243;n">Research Assistant</div><div class="xp-org">London School of Economics</div><div class="xp-desc" data-es="Consultor&#237;a sobre incentivos de productividad acad&#233;mica, cambio clim&#225;tico y legislaci&#243;n minera. Gesti&#243;n de rankings acad&#233;micos y conjuntos de datos geoespaciales en STATA y Python.">Consultancy on academic productivity incentives, climate change, and mining legislation. Managed academic rankings and geospatial datasets in STATA and Python.</div></div>
+    </div>
+
+    <div style="margin-top:3rem">
+      <div class="eyebrow sans" data-es="Docencia">Teaching</div>
+      <div class="section-rule"></div>
+    </div>
+
+    <div class="xp-item" onclick="this.classList.toggle('open')">
+      <div class="xp-when sans">2025-II</div>
+      <div><div class="xp-role" data-es="Asistente de C&#225;tedra">Teaching Assistant</div><div class="xp-org">Universidad del Pac&iacute;fico &mdash; Industrial Organization</div><div class="xp-desc" data-es="Apoyo a estudiantes en teor&#237;a microecon&#243;mica y an&#225;lisis de estructura de mercados.">Supported students in microeconomic theory and market structure analysis.</div></div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- WRITING -->
+<section id="writing" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow sans" data-es="Escritura">Writing</div>
+    <div class="section-rule"></div>
+    <h2 class="stitle" data-es="Substack y proyectos editoriales">Substack &amp; editorial projects</h2>
+    <div class="writing-grid" style="grid-template-columns:1fr">
+
+      <a href="https://substack.com/@lotuslatte" target="_blank" class="writing-card" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;padding:0;background:var(--border)">
+        <div style="padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg)">
+          <div class="writing-num sans">I</div>
+          <div class="writing-title">Unchained Thoughts</div>
+          <div class="writing-desc" data-es="Poes&#237;a y escritura personal. Biling&#252;e (EN/ES), emocionalmente impulsada, simb&#243;licamente densa. Construyendo hacia un poemario publicable.">Poetry &amp; personal writing. Bilingual (EN/ES), emotionally driven, symbolically dense. Building toward a publishable poemario.</div>
+        </div>
+        <div style="padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg)">
+          <div class="writing-num sans">II</div>
+          <div class="writing-title">Road to Philosophy</div>
+          <div class="writing-desc" data-es="Recorrido cronol&#243;gico por la filosof&#237;a occidental y oriental. Cada fil&#243;sofo mapeado como nota reflexiva y conectiva.">A chronological survey of Western and Eastern philosophy. Each concept mapped as a reflective, connective note.</div>
+        </div>
+        <div style="padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg)">
+          <div class="writing-num sans">III</div>
+          <div class="writing-title">Simulated Dreams</div>
+          <div class="writing-desc" data-es="An&#225;lisis cr&#237;tico de pel&#237;culas, libros, anime y videojuegos. Ensayos filos&#243;ficos sobre medios, realidad y conciencia.">Critical analysis of films, books, anime, and games. Philosophical media essays on reality and consciousness.</div>
+        </div>
+      </a>
+
+    </div>
+    <div style="margin-top:1.2rem;text-align:center">
+      <a href="https://substack.com/@lotuslatte" target="_blank" class="btn"><span data-es="Leer en Substack">Read on Substack</span></a>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PUBLICATIONS -->
+<section id="pub" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow sans" data-es="Publicaciones">Publications</div>
+    <div class="section-rule"></div>
+    <h2 class="stitle" data-es="Obras seleccionadas">Selected works</h2>
+
+    <div class="pub-item">
+      <div class="pub-type sans" data-es="Informe de Investigaci&#243;n">Research Report</div>
+      <div class="pub-title"><a href="https://ayudaenaccion.b-cdn.net/uploads/2025/07/Informe-arraigo-completo-ENG_FINAL.pdf" target="_blank">Immobility in Fragile Contexts: Between Dignity, Rootedness, and Migration</a></div>
+      <div class="pub-meta">Bird, Castro, Freier, Samillan Flores, et al. &middot; 2025 &middot; Ayuda en Acci&oacute;n &amp; Universidad del Pac&iacute;fico</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-type sans" data-es="Resumen de Pol&#237;ticas">Policy Brief</div>
+      <div class="pub-title"><a href="https://environmentalmigration.iom.int/sites/g/files/tmzbdl1411/files/documents/2025-10/policy-brief-series-lac.pdf" target="_blank">(In)Movilidad Humana en el Contexto del Cambio Clim&aacute;tico</a></div>
+      <div class="pub-meta">Forero, Wiegel, Bird, Samillan Flores, et al. &middot; 2025 &middot; OIM</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-type sans" data-es="Revista">Journal</div>
+      <div class="pub-title"><a href="https://revistas.pucp.edu.pe/index.php/anthropia/article/view/29571/26666" target="_blank">Dear Alice [Querida Alice] &mdash; Film Review</a></div>
+      <div class="pub-meta">Samillan Flores, F. &middot; 2024 &middot; Anthrop&iacute;a (21), 139-148</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-type sans" data-es="Art&#237;culo">Article</div>
+      <div class="pub-title"><a href="http://blog.pucp.edu.pe/blog/gemrapucp/2024/08/21/analisis-critico-de-la-mineria-ilegal-y-sus-consecuencias-en-la-reserva-natural-de-tambopata/" target="_blank">An&aacute;lisis Cr&iacute;tico de la Miner&iacute;a Ilegal en la Reserva Natural de Tambopata</a></div>
+      <div class="pub-meta">Samillan Flores, F. &middot; 2024 &middot; Blog GEMRAPUCP</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-type sans" data-es="Art&#237;culo">Article</div>
+      <div class="pub-title"><a href="https://economica.pe/conexiones-entre-salud-mental-y-desempleo/" target="_blank">Conexiones entre Salud Mental y Desempleo</a></div>
+      <div class="pub-meta">Samillan Flores, F. &middot; 2024 &middot; Econ&oacute;mica</div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-type sans" data-es="Poes&#237;a">Poetry</div>
+      <div class="pub-title"><a href="https://revistadan.wordpress.com/2025/03/03/tercer-numero/" target="_blank">Odi/ses</a></div>
+      <div class="pub-meta">Samillan Flores, F. &middot; 2025 &middot; Revista Ad&aacute;n</div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SELECTED PROGRAMS -->
+<section id="conf" class="conf-section reveal">
+  <div class="wrap">
+    <div class="eyebrow sans" data-es="Programas Seleccionados">Selected Programs</div>
+    <div class="section-rule"></div>
+    <h2 class="stitle" data-es="Eventos y programas acad&#233;micos">Events &amp; academic programs</h2>
+    <div class="conf-grid">
+
+      <div class="conf-card">
+        <div class="conf-year">2026</div>
+        <div class="conf-name">OPHI Summer School</div>
+        <div class="conf-detail" data-es="Pobreza Multidimensional y Desarrollo Humano. Participante aceptado en el curso de la Iniciativa de Pobreza y Desarrollo Humano de Oxford.">Multidimensional Poverty &amp; Human Development. Accepted participant at the Oxford Poverty and Human Development Initiative course.</div>
+        <div class="conf-loc sans">Universidad Latina &mdash; San Jos&eacute;, Costa Rica</div>
+      </div>
+
+      <div class="conf-card">
+        <div class="conf-year">2026</div>
+        <div class="conf-name">World Bank Group Youth Summit</div>
+        <div class="conf-detail" data-es="FutureWorks: Dise&#241;ando Empleos para la Era Digital. Delegado seleccionado para la cumbre anual del BM sobre juventud y desarrollo global.">FutureWorks: Designing Jobs for the Digital Age. Selected delegate for the annual WBG summit on youth &amp; global development.</div>
+        <div class="conf-loc sans">World Bank HQ &mdash; Washington, DC (Virtual)</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SKILLS -->
+<section id="sk" class="reveal">
+  <div class="wrap">
+    <div class="eyebrow sans" data-es="Habilidades">Skills</div>
+    <div class="section-rule"></div>
+    <h2 class="stitle" data-es="Herramientas y experiencia">Tools &amp; expertise</h2>
+    <div class="skills-grid">
+      <div>
+        <div class="skill-group">
+          <div class="skill-group-title sans" data-es="Programaci&#243;n y Datos">Programming &amp; Data</div>
+          <div class="skill-tags">
+            <span class="skill-tag sans">Python</span><span class="skill-tag sans">R</span><span class="skill-tag sans">SQL</span><span class="skill-tag sans">Stata</span><span class="skill-tag sans">Power BI</span><span class="skill-tag sans">Excel</span><span class="skill-tag sans" data-es="Econometr&#237;a">Econometrics</span><span class="skill-tag sans" data-es="Modelado Predictivo">Predictive Modeling</span><span class="skill-tag sans">NLP</span><span class="skill-tag sans" data-es="An&#225;lisis Geoespacial">Geospatial Analysis</span><span class="skill-tag sans" data-es="Series de Tiempo">Time Series</span><span class="skill-tag sans" data-es="An&#225;lisis de Clases Latentes">Latent Class Analysis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-title sans" data-es="Investigaci&#243;n y An&#225;lisis">Research &amp; Analysis</div>
+          <div class="skill-tags">
+            <span class="skill-tag sans" data-es="Investigaci&#243;n Cuantitativa">Quantitative Research</span><span class="skill-tag sans" data-es="M&#233;todos Mixtos">Mixed Methods</span><span class="skill-tag sans" data-es="An&#225;lisis de Impacto de Pol&#237;ticas">Policy Impact Analysis</span><span class="skill-tag sans" data-es="Econom&#237;a Ambiental">Environmental Economics</span><span class="skill-tag sans" data-es="An&#225;lisis Financiero">Financial Analysis</span><span class="skill-tag sans">Bloomberg Terminal</span><span class="skill-tag sans">Capital IQ</span><span class="skill-tag sans" data-es="Visualizaci&#243;n de Datos">Data Visualization</span>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-title sans" data-es="Idiomas">Languages</div>
+        <div class="lang-block">
+          <div class="lang-name" data-es="Espa&#241;ol">Spanish</div>
+          <div class="lang-level" data-es="Nativo">Native</div>
+        </div>
+        <div class="lang-block">
+          <div class="lang-name" data-es="Ingl&#233;s">English</div>
+          <div class="lang-level">B2 &mdash; FCE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="ct">
+  <div class="eyebrow sans" data-es="Contacto">Contact</div>
+  <h2 class="stitle" style="margin-bottom:.6rem" data-es="Conectemos">Let's connect</h2>
+  <p class="contact-sub" data-es="Abierto a colaboraciones de investigaci&#243;n, consultor&#237;a y oportunidades acad&#233;micas.">Open to research collaborations, consulting, and academic opportunities.</p>
+  <div class="contact-links">
+    <a href="mailto:f.samillanf@up.edu.pe" class="contact-link sans">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+      <span data-es="Correo">Email</span>
+    </a>
+    <a href="https://www.linkedin.com/in/f-samillan/" target="_blank" class="contact-link sans">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://scholar.google.com/citations?user=PanxwngAAAAJ&hl=es" target="_blank" class="contact-link sans">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 14l9-5-9-5-9 5 9 5z"/><path d="M12 14l6.16-3.422A12.08 12.08 0 0 1 21 17.5c0 1.38-.55 2.5-1.5 2.5H4.5C3.55 20 3 18.88 3 17.5a12.08 12.08 0 0 1 2.84-6.922L12 14z"/><line x1="21" y1="9" x2="21" y2="17"/></svg>
+      Google Scholar
+    </a>
+    <a href="https://substack.com/@lotuslatte" target="_blank" class="contact-link sans">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16"/><path d="M4 8h16"/><path d="M4 12l8 6 8-6"/></svg>
+      Substack
+    </a>
+    <a href="https://drive.google.com/file/d/1JuktXXNhl-qD7OIGgun0cJ4wCWhrcEQl/view?usp=drive_link" target="_blank" class="contact-link contact-link-cv sans">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      <span data-es="Descargar CV">Download CV</span>
+    </a>
+  </div>
+</section>
+
+<button class="btt" id="btt" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="18 15 12 9 6 15"/></svg>
+</button>
+
+<footer class="sans">&copy; 2026 Favio Samillan Flores</footer>
+
+<script>
+const html=document.documentElement;
+
+// ── Nav scroll ──
+addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',scrollY>50);
+  document.getElementById('btt').classList.toggle('show',scrollY>600);
+});
+
+// ── Back to top ──
+document.getElementById('btt').addEventListener('click',()=>{
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+// ── Scroll reveal ──
+const obs=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');obs.unobserve(el.target)}})},{threshold:.1,rootMargin:'0px 0px -50px 0px'});
+document.querySelectorAll('.reveal,.stagger').forEach(el=>obs.observe(el));
+
+// ── Scroll spy ──
+const sections=document.querySelectorAll('section[id]');
+const navLinks=document.querySelectorAll('#navMenu a[href^="#"]');
+function updateSpy(){
+  let current='';
+  sections.forEach(s=>{
+    if(scrollY>=s.offsetTop-120)current=s.id;
+  });
+  navLinks.forEach(a=>{
+    a.classList.toggle('active',a.getAttribute('href')==='#'+current);
+  });
+}
+addEventListener('scroll',updateSpy);
+updateSpy();
+
+// ── Animated counters ──
+const counterObs=new IntersectionObserver(e=>{e.forEach(entry=>{
+  if(entry.isIntersecting){
+    entry.target.querySelectorAll('.counter-num').forEach(el=>{
+      const raw=el.textContent.trim();
+      const suffix=raw.replace(/[0-9]/g,'');
+      const target=parseInt(raw);
+      if(isNaN(target))return;
+      let current=0;
+      const step=Math.max(1,Math.floor(target/30));
+      const timer=setInterval(()=>{
+        current+=step;
+        if(current>=target){current=target;clearInterval(timer)}
+        el.textContent=current+suffix;
+      },35);
+    });
+    counterObs.unobserve(entry.target);
+  }
+})},{threshold:.5});
+document.querySelectorAll('.counters').forEach(el=>counterObs.observe(el));
+
+// ── Theme toggle ──
+const saved=localStorage.getItem('theme');
+if(saved)html.setAttribute('data-theme',saved);
+else if(matchMedia('(prefers-color-scheme:dark)').matches)html.setAttribute('data-theme','dark');
+
+document.getElementById('themeToggle').addEventListener('click',()=>{
+  const next=html.getAttribute('data-theme')==='dark'?'light':'dark';
+  html.setAttribute('data-theme',next);
+  localStorage.setItem('theme',next);
+});
+
+// ── Language toggle ──
+const langBtn=document.getElementById('langToggle');
+const savedLang=localStorage.getItem('lang');
+if(savedLang&&savedLang==='es')setLang('es');
+
+function setLang(lang){
+  document.querySelectorAll('[data-es]').forEach(el=>{
+    if(!el.dataset.en)el.dataset.en=el.textContent;
+    el.textContent=lang==='es'?el.dataset.es:el.dataset.en;
+  });
+  html.setAttribute('data-lang',lang);
+  html.setAttribute('lang',lang);
+  langBtn.textContent=lang==='es'?'EN':'ES';
+  localStorage.setItem('lang',lang);
+}
+
+langBtn.addEventListener('click',()=>{
+  setLang(html.getAttribute('data-lang')==='es'?'en':'es');
+});
+</script>
+</body>
+</html>
