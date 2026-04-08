@@ -323,8 +323,9 @@ footer{
   .about-grid{grid-template-columns:1fr}
   .xp-item{grid-template-columns:1fr;gap:.2rem}
   .writing-grid{grid-template-columns:1fr}
-  .writing-grid>a[style]{display:block!important}
+  .writing-grid>a[style]{display:grid!important;grid-template-columns:1fr!important}
   .writing-grid>a>div{display:block!important}
+  .writing-grid p{max-width:100%!important}
   .conf-grid{grid-template-columns:1fr}
   .skills-grid{grid-template-columns:1fr}
   .counters{grid-template-columns:1fr 1fr}
@@ -509,30 +510,35 @@ nav li a.active{color:var(--accent)}
   <div class="wrap">
     <div class="eyebrow sans" data-es="Escritura">Writing</div>
     <div class="section-rule"></div>
-    <h2 class="stitle" data-es="Substack y proyectos editoriales">Substack &amp; editorial projects</h2>
-    <div class="writing-grid" style="grid-template-columns:1fr">
+    <h2 class="stitle">Caf&eacute; sin Az&uacute;car</h2>
+    <p style="font-size:1rem;color:var(--fg-muted);font-weight:300;line-height:1.8;max-width:600px;margin-bottom:2.5rem" data-es="Un newsletter semanal donde colisionan las cosas que me importan: filosof&#237;a, poes&#237;a, datos, cine, anime, Lima, y lo que no me deja dormir esa semana. Una pieza por semana. Sin algoritmo, sin az&#250;car, directo a tu bandeja.">A weekly newsletter where the things I care about collide: philosophy, poetry, data, film, anime, Lima, and whatever won't let me sleep that week. One piece a week. No algorithm, no sugar, straight to your inbox.</p>
 
-      <a href="https://substack.com/@lotuslatte" target="_blank" class="writing-card" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;padding:0;background:var(--border)">
-        <div style="padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg)">
+    <div class="writing-grid" style="grid-template-columns:1fr">
+      <a href="https://substack.com/@lotuslatte" target="_blank" class="writing-card" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;padding:0;background:var(--border)">
+        <div style="padding:clamp(1.2rem,2.5vw,2rem);background:var(--bg)">
           <div class="writing-num sans">I</div>
-          <div class="writing-title">Unchained Thoughts</div>
-          <div class="writing-desc" data-es="Poes&#237;a y escritura personal. Biling&#252;e (EN/ES), emocionalmente impulsada, simb&#243;licamente densa. Construyendo hacia un poemario publicable.">Poetry &amp; personal writing. Bilingual (EN/ES), emotionally driven, symbolically dense. Building toward a publishable poemario.</div>
+          <div class="writing-title">Grounds &amp; Verses</div>
+          <div class="writing-desc" data-es="Poes&#237;a, fragmentos, reflexiones, cr&#243;nicas urbanas. Lo que pasa cuando camino por Lima con los ojos abiertos y un cuaderno en el bolsillo. A veces en espa&#241;ol, a veces en ingl&#233;s.">Poetry, fragments, reflections, urban chronicles. What happens when I walk through Lima with my eyes open and a notebook in my pocket. Sometimes in Spanish, sometimes in English.</div>
         </div>
-        <div style="padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg)">
+        <div style="padding:clamp(1.2rem,2.5vw,2rem);background:var(--bg)">
           <div class="writing-num sans">II</div>
-          <div class="writing-title">Road to Philosophy</div>
-          <div class="writing-desc" data-es="Recorrido cronol&#243;gico por la filosof&#237;a occidental y oriental. Cada fil&#243;sofo mapeado como nota reflexiva y conectiva.">A chronological survey of Western and Eastern philosophy. Each concept mapped as a reflective, connective note.</div>
+          <div class="writing-title">The Long Brew</div>
+          <div class="writing-desc" data-es="Ensayos sobre fil&#243;sofos, conceptos e ideas que no puedo dejar de pensar. Byung-Chul Han y el burnout de Lima. Spinoza y el afecto. Filosof&#237;a sin jerga, conectada a la vida.">Essays on philosophers, concepts, and ideas I can't stop thinking about. Byung-Chul Han and Lima's burnout. Spinoza and affect. Philosophy without jargon, connected to life.</div>
         </div>
-        <div style="padding:clamp(1.5rem,3vw,2.2rem);background:var(--bg)">
+        <div style="padding:clamp(1.2rem,2.5vw,2rem);background:var(--bg)">
           <div class="writing-num sans">III</div>
-          <div class="writing-title">Simulated Dreams</div>
-          <div class="writing-desc" data-es="An&#225;lisis cr&#237;tico de pel&#237;culas, libros, anime y videojuegos. Ensayos filos&#243;ficos sobre medios, realidad y conciencia.">Critical analysis of films, books, anime, and games. Philosophical media essays on reality and consciousness.</div>
+          <div class="writing-title">Caffeine Dreams</div>
+          <div class="writing-desc" data-es="An&#225;lisis filos&#243;fico de cine, anime, libros y videojuegos. &#191;Puede sufrir una m&#225;quina? &#191;Qui&#233;n decide qui&#233;n merece ser humano? Las preguntas que la ficci&#243;n hace cuando la realidad no se atreve.">Philosophical analysis of film, anime, books, and video games. Can a machine suffer? Who decides who deserves to be human? The questions fiction asks when reality doesn't dare.</div>
+        </div>
+        <div style="padding:clamp(1.2rem,2.5vw,2rem);background:var(--bg)">
+          <div class="writing-num sans">IV</div>
+          <div class="writing-title">Dato Amargo</div>
+          <div class="writing-desc" data-es="Ensayos basados en datos sobre clima, migraci&#243;n, econom&#237;a y pol&#237;tica. Un n&#250;mero duro lo abre, una historia humana lo sostiene, un argumento lo cierra. Siempre en espa&#241;ol.">Data-driven essays on climate, migration, economics, and politics. A hard number opens it, a human story holds it, an argument closes it. Always in Spanish.</div>
         </div>
       </a>
-
     </div>
     <div style="margin-top:1.2rem;text-align:center">
-      <a href="https://substack.com/@lotuslatte" target="_blank" class="btn"><span data-es="Leer en Substack">Read on Substack</span></a>
+      <a href="https://substack.com/@lotuslatte" target="_blank" class="btn"><span data-es="Suscr&#237;bete en Substack">Subscribe on Substack</span></a>
     </div>
   </div>
 </section>
