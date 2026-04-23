@@ -134,6 +134,76 @@ document.addEventListener('DOMContentLoaded', async function() {
     // preserve ordering (React before ReactDOM before Babel before text/babel).
     const doc = new DOMParser().parseFromString(template, 'text/html');
     document.documentElement.replaceWith(doc.documentElement);
+
+    // Ensure mobile viewport meta (bundled template omits it) + inject
+    // responsive overrides. The bundled CSS is desktop-only (no @media),
+    // so these rules collapse multi-column grids, tighten padding, and
+    // scale typography below 900px / 480px breakpoints.
+    if (!document.querySelector('meta[name="viewport"]')) {
+      const vp = document.createElement('meta');
+      vp.name = 'viewport';
+      vp.content = 'width=device-width, initial-scale=1, viewport-fit=cover';
+      document.head.appendChild(vp);
+    }
+    const mobileCSS = document.createElement('style');
+    mobileCSS.id = '__mobile_overrides';
+    mobileCSS.textContent = `
+      @media (max-width: 900px) {
+        .final .wrap { padding: 0 20px !important; }
+        .final .masthead { padding: 20px 20px 14px !important; }
+        .final .masthead .row { flex-direction: column !important; align-items: stretch !important; gap: 10px !important; }
+        .final .masthead .left, .final .masthead .right { text-align: center !important; }
+        .final .masthead .wordmark { font-size: clamp(36px, 10vw, 56px) !important; }
+        .final nav.menu { padding: 10px 14px !important; gap: 10px !important; justify-content: center !important; }
+        .final nav.menu::after { left: 14px !important; right: 14px !important; }
+        .final nav.menu ul { justify-content: center !important; row-gap: 2px !important; }
+        .final nav.menu .status-pill { display: none !important; }
+        .final .hero { padding: 32px 0 36px !important; }
+        .final .hero-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+        .final .hero h1 { font-size: clamp(44px, 12vw, 72px) !important; margin-bottom: 20px !important; }
+        .final .hero .bio { font-size: 17px !important; max-width: 100% !important; }
+        .final .hero .quick { max-width: 100% !important; flex-wrap: wrap !important; }
+        .final .hero .quick > div { flex: 1 1 50% !important; border-right: none !important; border-bottom: 1px solid var(--ink) !important; }
+        .final .hero .quick > div:nth-last-child(-n+2) { border-bottom: none !important; }
+        .final .hero .quick > div:nth-child(odd) { border-right: 1px solid var(--ink) !important; }
+        .final .polaroid-wrap { max-width: 260px !important; margin: 0 auto !important; }
+        .final .polaroid-stamp { width: 80px !important; height: 80px !important; top: -22px !important; left: -18px !important; }
+        .final .marquee-inner { font-size: 18px !important; gap: 28px !important; }
+        .final .sec-h { grid-template-columns: 56px 1fr !important; gap: 14px !important; margin-bottom: 28px !important; padding-bottom: 10px !important; }
+        .final .sec-h > :nth-child(3) { grid-column: 1 / -1 !important; text-align: right !important; margin-top: 4px !important; }
+        .final .sec-h h2 { font-size: clamp(26px, 6vw, 40px) !important; }
+        .final .about { grid-template-columns: 1fr !important; gap: 28px !important; }
+        .final .about .body p:first-child::first-letter { font-size: 54px !important; padding: 4px 8px 0 0 !important; }
+        .final .counters { gap: 8px !important; }
+        .final .counter .n { font-size: 36px !important; }
+        .final .log { grid-template-columns: 1fr !important; }
+        .final .atlas { grid-template-columns: 1fr !important; gap: 20px !important; }
+        .final .map-frame.vintage,
+        .final .atlas > :first-child { height: 340px !important; }
+        .final .atlas-panel { height: auto !important; }
+        .final .atlas-footnote { flex-direction: column !important; align-items: stretch !important; }
+        .final .atlas-footnote .af-focus { min-width: 0 !important; flex: 1 1 auto !important; }
+      }
+      @media (max-width: 480px) {
+        .final .wrap { padding: 0 16px !important; }
+        .final .masthead { padding: 16px 16px 12px !important; }
+        .final nav.menu { padding: 8px 10px !important; }
+        .final nav.menu ul { gap: 0 !important; }
+        .final nav.menu a { padding: 4px 6px !important; }
+        .final nav.menu a .l { font-size: 13px !important; }
+        .final .hero { padding: 24px 0 30px !important; }
+        .final .hero h1 { font-size: clamp(38px, 12vw, 56px) !important; }
+        .final .hero .bio { font-size: 16px !important; }
+        .final .hero .quick > div { flex: 1 1 100% !important; border-right: none !important; border-bottom: 1px solid var(--ink) !important; }
+        .final .hero .quick > div:last-child { border-bottom: none !important; }
+        .final .counters { grid-template-columns: 1fr !important; }
+        .final .counter .n { font-size: 32px !important; }
+        .final .sec-h h2 { font-size: clamp(24px, 7vw, 34px) !important; }
+        .final .marquee-inner { font-size: 16px !important; }
+      }
+    `;
+    document.head.appendChild(mobileCSS);
+
     const dead = Array.from(document.scripts);
     for (const old of dead) {
       const s = document.createElement('script');
